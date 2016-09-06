@@ -1,0 +1,158 @@
+/* Swatches =================================================== */
+
+.swatch-span {
+	float:left;
+	width:250px;
+	margin:10px;
+}
+
+.swatch {
+  margin: 0 0 1.5em 0;
+  padding: 0;
+}
+.swatch-row {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.swatch-row span {
+  display: block;
+  float: left;
+  width: 20%;
+  height: 50px;
+}
+
+
+/*  ONE  */
+.swatch-one .swatch-row-one span:nth-child(1) {
+  background-color: $color-primary-one;
+}
+.swatch-one .swatch-row-one span:nth-child(2) {
+  background-color: tint($color-primary-one, 20%);
+}
+.swatch-one .swatch-row-one span:nth-child(3) {
+  background-color: tint($color-primary-one, 40%);
+}
+.swatch-one .swatch-row-one span:nth-child(4) {
+  background-color: tint($color-primary-one, 60%);
+}
+.swatch-one .swatch-row-one span:nth-child(5) {
+  background-color: tint($color-primary-one, 80%);
+}
+
+.swatch-one .swatch-row-two span:nth-child(1) {
+  background-color: $color-primary-one;
+}
+.swatch-one .swatch-row-two span:nth-child(2) {
+  background-color: shade($color-primary-one, 20%);
+}
+.swatch-one .swatch-row-two span:nth-child(3) {
+  background-color: shade($color-primary-one, 40%);
+}
+.swatch-one .swatch-row-two span:nth-child(4) {
+  background-color: shade($color-primary-one, 60%);
+}
+.swatch-one .swatch-row-two span:nth-child(5) {
+  background-color: shade($color-primary-one, 80%);
+}
+
+/*  TWO  */
+.swatch-two .swatch-row-one span:nth-child(1) {
+  background-color: $color-primary-two;
+}
+.swatch-two .swatch-row-one span:nth-child(2) {
+  background-color: tint($color-primary-two, 20%);
+}
+.swatch-two .swatch-row-one span:nth-child(3) {
+  background-color: tint($color-primary-two, 40%);
+}
+.swatch-two .swatch-row-one span:nth-child(4) {
+  background-color: tint($color-primary-two, 60%);
+}
+.swatch-two .swatch-row-one span:nth-child(5) {
+  background-color: tint($color-primary-two, 80%);
+}
+
+.swatch-two .swatch-row-two span:nth-child(1) {
+  background-color: $color-primary-two;
+}
+.swatch-two .swatch-row-two span:nth-child(2) {
+  background-color: shade($color-primary-two, 20%);
+}
+.swatch-two .swatch-row-two span:nth-child(3) {
+  background-color: shade($color-primary-two, 40%);
+}
+.swatch-two .swatch-row-two span:nth-child(4) {
+  background-color: shade($color-primary-two, 60%);
+}
+.swatch-two .swatch-row-two span:nth-child(5) {
+  background-color: shade($color-primary-two, 80%);
+}
+
+
+/*  THREE  */
+.swatch-three .swatch-row-one span:nth-child(1) {
+  background-color: $color-grey;
+}
+.swatch-three .swatch-row-one span:nth-child(2) {
+  background-color: tint($color-grey, 20%);
+}
+.swatch-three .swatch-row-one span:nth-child(3) {
+  background-color: tint($color-grey, 40%);
+}
+.swatch-three .swatch-row-one span:nth-child(4) {
+  background-color: tint($color-grey, 60%);
+}
+.swatch-three .swatch-row-one span:nth-child(5) {
+  background-color: tint($color-grey, 80%);
+}
+
+.swatch-three .swatch-row-two span:nth-child(1) {
+  background-color: $color-grey;
+}
+.swatch-three .swatch-row-two span:nth-child(2) {
+  background-color: shade($color-grey, 20%);
+}
+.swatch-three .swatch-row-two span:nth-child(3) {
+  background-color: shade($color-grey, 40%);
+}
+.swatch-three .swatch-row-two span:nth-child(4) {
+  background-color: shade($color-grey, 60%);
+}
+.swatch-three .swatch-row-two span:nth-child(5) {
+  background-color: shade($color-grey, 80%);
+}
+
+/*  FOUR  */
+.swatch-four .swatch-row-one span:nth-child(1) {
+  background-color: $color-black;
+}
+.swatch-four .swatch-row-one span:nth-child(2) {
+  background-color: tint($color-black, 20%);
+}
+.swatch-four .swatch-row-one span:nth-child(3) {
+  background-color: tint($color-black, 40%);
+}
+.swatch-four .swatch-row-one span:nth-child(4) {
+  background-color: tint($color-black, 60%);
+}
+.swatch-four .swatch-row-one span:nth-child(5) {
+  background-color: tint($color-black, 80%);
+}
+
+.swatch-four .swatch-row-two span:nth-child(1) {
+  background-color: $color-black;
+}
+.swatch-four .swatch-row-two span:nth-child(2) {
+  background-color: shade($color-black, 20%);
+}
+.swatch-four .swatch-row-two span:nth-child(3) {
+  background-color: shade($color-black, 40%);
+}
+.swatch-four .swatch-row-two span:nth-child(4) {
+  background-color: shade($color-black, 60%);
+}
+.swatch-four .swatch-row-two span:nth-child(5) {
+  background-color: shade($color-black, 80%);
+}

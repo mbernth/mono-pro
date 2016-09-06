@@ -1,0 +1,150 @@
+/* # Footer Widgets
+---------------------------------------------------------------------------------------------------- */
+
+.footer-widgets {
+	background-color: $color-grey;
+	clear: both;
+	padding: 100px 0;
+}
+
+.footer-widgets .wrap {
+	width:90%;
+}
+
+.footer-widgets,
+.footer-widgets a {
+	color: shade($color-grey, 80%);
+	@include font(1.4, 2);
+	font-weight:600;
+	text-transform:uppercase;
+}
+
+.footer-widgets input {
+	border: 1px solid $color-black;
+}
+
+.footer-widgets a.button {
+	color: shade($color-grey, 80%);
+	text-decoration:none;
+}
+.footer-widgets a:hover,
+.footer-widgets a:focus {
+	color: shade($color-grey, 60%);
+	text-decoration:none;
+}
+
+.footer-widgets a {
+	color: shade($color-grey, 80%);
+	text-decoration:none;
+	border-bottom: 4px solid $color-grey;
+    box-shadow: inset 0 0px 0 $color-grey;
+    text-decoration: none;
+	padding:0px 0px;
+	
+	-webkit-transition: box-shadow .5s ease-in-out;
+	-moz-transition:    box-shadow .5s ease-in-out;
+	-ms-transition:     box-shadow .5s ease-in-out;
+	-o-transition:      box-shadow .5s ease-in-out;
+	transition:         box-shadow .5s ease-in-out;
+}
+
+.footer-widgets a:hover,
+.footer-widgets a:focus {
+    border-bottom: 4px solid $color-grey;
+    box-shadow: inset 0 -30px 0 shade( $color-grey, 20%);
+}
+
+.footer-widgets a img,
+.footer-widgets a:hover img,
+.footer-widgets a:focus img{
+    border-bottom: 4px solid $color-grey;
+    box-shadow: inset 0 -30px 0 $color-grey;
+}
+
+
+.footer-widgets li {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.footer-widgets .widget {
+	margin-bottom: 30px;
+}
+
+.footer-widgets p:last-child {
+	margin-bottom: 0;
+}
+
+.footer-widgets .widget-area {
+	display:block;
+	float:left;
+	@include grid(4, 40, 1328);
+}
+
+.footer-widgets .footer-widgets-1 .textwidget h4 {
+    display: block;
+    background: url(images/nextstep_logo_200.svg) no-repeat left top;
+    width: 188px;
+    height: 38px;
+    margin-bottom: 0px;
+	text-indent: -9999px;
+}
+
+/* ## Social Icons
+--------------------------------------------- */
+
+.simple-social-icons ul li a, 
+.simple-social-icons ul li a:hover {
+    padding: 21px !important;
+}
+.simple-social-icons a {
+    border-bottom: none;
+}
+.simple-social-icons a:hover,
+.simple-social-icons a:focus {
+    border-bottom: none;
+    box-shadow: none;
+}
+
+/* ## Search Area
+--------------------------------------------- */
+
+.footer_search {
+	background-color:$color-grey;
+	padding:30px 0 100px 0;
+}
+
+.footer_search .wrap{
+	margin:0 auto;
+	width:90%;
+	max-width:1328px;
+}
+
+.footer_search .wrap .widget_search{
+	position:relative;
+	border-top:1px solid $color-black;
+	margin:0 auto;
+	@include structure(640, 1328);
+}
+
+.footer_search  .widget_search .widget-wrap {
+	position: relative;
+	margin:0 auto;
+	width:100%;
+	max-width:420px;
+    margin-top: 60px;
+}
+
+.footer_search .input__field--yoko {
+	color:$color-grey;
+}
+
+.footer_search .c-button_icon .icon-search,
+.footer_search .c-menu label, .input__label--yoko {
+	color:$color-black;
+	
+}
+.input__label--yoko::before,
+.input__label--yoko::after {
+	background:$color-black;
+}

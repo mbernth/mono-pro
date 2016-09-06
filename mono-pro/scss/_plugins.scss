@@ -1,0 +1,407 @@
+/* # Plugins
+---------------------------------------------------------------------------------------------------- */
+
+/* ## Genesis eNews Extended
+--------------------------------------------- */
+
+.enews-widget,
+.enews-widget .widget-title {
+	color: $color-white;
+}
+
+.sidebar .widget.enews-widget {
+	background-color: $color-black;
+}
+
+.enews-widget input,
+.enews-widget input:focus {
+	border: 1px solid $color-black;
+}
+
+.enews-widget input {
+	@include font(1.6, 2.4);
+	margin-bottom: 16px;
+}
+
+.enews-widget input[type="submit"] {
+	background-color: $color-primary-one;
+	color: $color-white;
+	margin: 0;
+	width: 100%;
+}
+
+.enews-widget input:hover[type="submit"],
+.enews-widget input:focus[type="submit"]  {
+	background-color: $color-white;
+	color: $color-black;
+}
+
+.enews form + p {
+	margin-top: 24px;
+}
+
+/* ## Jetpack
+--------------------------------------------- */
+
+#wpstats {
+	display: none;
+}
+
+
+/* # Skip Links
+---------------------------------------------------------------------------------------------------- */
+.genesis-skip-link {
+	margin: 0;
+}
+
+.genesis-skip-link li {
+	height: 0;
+	width: 0;
+	list-style: none;
+}
+
+
+/* # Table press
+---------------------------------------------------------------------------------------------------- */
+
+.tablepress-table-description {
+    clear: both;
+    display: block
+}
+
+.tablepress {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 1em;
+    border: none
+}
+
+.tablepress td,
+.tablepress th {
+    padding: 8px;
+    border: none;
+    background: 0 0;
+    text-align: left;
+    float: none!important
+}
+
+.tablepress tbody td {
+    vertical-align: top
+}
+
+.tablepress tbody td,
+.tablepress tfoot th {
+    border-top: 1px solid $color-grey;
+}
+
+.tablepress tbody tr:first-child td {
+    border-top: 0
+}
+
+.tablepress thead th {
+    border-bottom: 1px solid $color-grey;
+}
+
+.tablepress tfoot th,
+.tablepress thead th {
+    background-color: transparent;
+    font-weight: 600;
+    vertical-align: middle
+}
+
+.tablepress tfoot th{
+	background-color:shade($color-grey, 40%);
+	color: tint($color-grey, 10%);
+	@include font(1.6, 2.4);
+	font-weight: 400;
+}
+
+.tablepress .odd td {
+    background-color: tint($color-grey, 20%);
+}
+
+.tablepress .even td {
+    background-color: transparent;
+}
+
+.tablepress .row-hover tr:hover td {
+    background-color: $color-grey;
+}
+
+/* ## Table press
+--------------------------------------------- */
+
+.Grey .tablepress tbody td,
+.Grey .tablepress tfoot th {
+    border-top: 1px solid shade($color-grey, 10%);
+}
+.Grey .tablepress thead th {
+    border-bottom: 1px solid shade($color-grey, 10%);
+}
+
+.Grey .tablepress .row-hover tr:hover td {
+    background-color: shade($color-grey, 10%);
+}
+
+.Black .tablepress .odd td,
+.Red .tablepress .odd td {
+    color: shade($color-grey, 60%);
+}
+
+.Black .tablepress .row-hover tr:hover td,
+.Red .tablepress .row-hover tr:hover td {
+    color: shade($color-grey, 60%);
+	background-color: shade($color-grey, 10%);
+}
+
+
+.tablepress img {
+    margin: 0;
+    padding: 0;
+    border: none;
+    max-width: none
+}
+
+.dataTables_wrapper {
+    clear: both;
+    margin-bottom: 1em
+}
+
+.dataTables_wrapper .tablepress {
+    clear: both;
+    margin: 0!important
+}
+
+.dataTables_length {
+    float: left;
+    white-space: nowrap
+}
+
+.dataTables_filter {
+    float: right;
+    white-space: nowrap
+}
+
+.dataTables_info {
+    clear: both;
+    float: left;
+    margin: 4px 0 0
+}
+
+.dataTables_paginate {
+    float: right;
+    margin: 4px 0 0
+}
+
+.dataTables_paginate a {
+    color: #111!important;
+    display: inline-block;
+    outline: 0;
+    position: relative;
+    text-decoration: underline;
+    text-decoration: none\0/IE;
+    margin: 0 5px
+}
+
+.dataTables_paginate a:first-child {
+    margin-left: 0
+}
+
+.dataTables_paginate a:last-child {
+    margin-right: 0
+}
+
+.paginate_button:hover {
+    cursor: pointer;
+    text-decoration: none
+}
+
+.paginate_button.disabled {
+    color: #999!important;
+    text-decoration: none;
+    cursor: default
+}
+
+.paginate_button.current {
+    font-weight: 700;
+    text-decoration: none;
+    cursor: default
+}
+
+.dataTables_paginate.paging_simple {
+    padding: 0 15px
+}
+
+.paging_simple .paginate_button.next:after,
+.paging_simple .paginate_button.previous:before {
+    text-align: left;
+    font-family: TablePress;
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    content: "\f053";
+    text-shadow: .1em .1em #666;
+    position: absolute;
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: -14px;
+    margin: auto;
+    height: 14px;
+    width: 14px;
+    line-height: 1
+}
+
+.paging_simple .paginate_button.next:after {
+    text-align: right;
+    content: "\f054";
+    left: auto
+}
+
+.paginate_button:after,
+.paginate_button:before {
+    color: #d9edf7
+}
+
+.paginate_button:hover:after,
+.paginate_button:hover:before {
+    color: #049cdb
+}
+
+.paginate_button.disabled:after,
+.paginate_button.disabled:before {
+    color: #f9f9f9
+}
+
+.dataTables_processing {
+    display: none
+}
+
+.dataTables_scroll {
+    clear: both
+}
+
+.dataTables_scrollBody {
+    -webkit-overflow-scrolling: touch
+}
+
+.tablepress .sorting,
+.tablepress .sorting_asc,
+.tablepress .sorting_desc {
+    position: relative;
+    padding-right: 20px;
+    cursor: pointer;
+    outline: 0
+}
+
+.tablepress .sorting:after,
+.tablepress .sorting_asc:after,
+.tablepress .sorting_desc:after {
+    font-family: TablePress;
+    font-weight: 400;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 6px;
+    margin: auto;
+    height: 14px;
+    line-height: 1
+}
+
+.tablepress .sorting:after {
+    content: "\f0dc"
+}
+
+.tablepress .sorting_asc:after {
+    content: "\f0d8";
+    padding: 0 0 2px
+}
+
+.tablepress .sorting_desc:after {
+    content: "\f0d7"
+}
+
+.dataTables_scrollBody .tablepress thead th:after,
+.dataTables_wrapper:after {
+    content: ""
+}
+
+.tablepress .sorting:hover,
+.tablepress .sorting_asc,
+.tablepress .sorting_desc {
+    background-color: #049cdb
+}
+
+.dataTables_wrapper:after {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0
+}
+
+.dataTables_wrapper label input,
+.dataTables_wrapper label select {
+    display: inline;
+    margin: 2px;
+    width: auto
+}
+
+/* ## Advanced Costum Fields Google map
+--------------------------------------------- */
+
+.acf-map {
+  width: 100%;
+  height: 400px;
+  border: none;
+  margin: 0; 
+ }
+ 
+/* Countdown
+---------------------------------------------------------------------------------------------------- */
+
+div#countdown{
+	margin:0 auto;
+	width:90%;
+	max-width:960px;
+}
+
+div#countdown span{
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	color:$color-white;
+	margin-bottom:0;
+	padding:25% 0;
+}
+
+span.numbers{
+	width: 100%;
+	background-color: rgba(255, 255, 255, .55);
+	text-shadow: 3px 4px 8px rgba(0, 0, 0, 0.15);
+	font-weight: 700;
+	@include font(6.8, 6.8);
+}
+
+div#countdown span.strings{
+	margin-top:4px;
+	width: 100%;
+	height: auto;
+	padding: 10px 30px;
+	color:$color-primary-one;
+	background-color: rgba(255, 255, 255, .45);
+	@include font(1.4, 1.4);
+	font-weight:700;
+	text-transform:uppercase;
+	padding:10px 0;
+}
+
+div.cd-box{
+	@include grid(4, 15, 960);
+	background: transparent;
+	float: left;
+}

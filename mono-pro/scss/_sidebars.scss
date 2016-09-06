@@ -1,0 +1,21 @@
+/* # Sidebars
+---------------------------------------------------------------------------------------------------- */
+
+.sidebar {
+}
+
+.sidebar li {
+	border-bottom: 1px dotted $color-black;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.sidebar p:last-child,
+.sidebar ul > li:last-child {
+	margin-bottom: 0;
+}
+
+.sidebar .widget {
+	background-color: $color-white;
+	margin-bottom: 40px;
+}

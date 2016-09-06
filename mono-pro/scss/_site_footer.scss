@@ -1,0 +1,16 @@
+/* # Site Footer
+---------------------------------------------------------------------------------------------------- */
+
+.site-footer {
+	background-color: $color-primary-one;
+	@include font(1.0, 1.2);
+	font-weight:400;
+	color:$color-white;
+	line-height: 1;
+	padding: 25px 0;
+	text-align: center;
+}
+
+.site-footer p {
+	margin-bottom: 0;
+}

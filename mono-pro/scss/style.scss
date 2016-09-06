@@ -1,0 +1,176 @@
+/* # Genesis Child Theme 
+Theme Name: mono pro
+Theme URI: https://github.com/mbernth/mono-pro
+Description: This is starter theme created for the Genesis Framework.
+Author: mono voce aps
+Author URI: http://www.monovoce.com/
+Template: genesis
+Version: 1.0.0
+License: GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+
+/* # Table of Contents
+- HTML5 Reset
+	- Baseline Normalize
+	- Box Sizing
+	- Float Clearing
+*/
+	@import "reset";
+/*
+- Mixins
+- Tint and Shade
+- Swatches
+*/
+	@import "mixins";
+	@import "tint_shade";
+	@import "swatches";
+/*
+
+- Defaults
+	- Typographical Elements
+	- Headings
+	- Objects
+	- Gallery
+	- Forms
+	- Tables
+	- Screen Reader Text
+	- SVG Icons
+	- Gravity Forms
+*/
+	@import "defaults";
+	@import "svg_icons";
+	@import "gravity_forms";
+/*
+- Structure and Layout
+	- Site Containers
+	- Column Widths and Positions
+	- Column Classes
+	- Site Grid
+*/
+	@import "structure_layout";
+	@import "site_grid";
+/*
+- Common Classes
+	- Avatar
+	- Genesis
+	- Search Form
+	- Titles
+	- WordPress
+*/
+	@import "common_classes";
+/*
+- Widgets
+	- Featured Content
+*/
+	@import "widgets";
+/*
+- Plugins
+	- Genesis eNews Extended
+	- Jetpack
+	- Owl Slider
+*/
+	@import "plugins";
+	@import "owl_carousel";
+	@import "owl_theme";
+	@import "owl_transitions";
+	@import "timeline";
+	@import "push";
+/*
+- Site Header
+	- Title Area
+	- Widget Area
+	- Before header
+	- Search Menu
+*/
+	@import "site_header";
+	@import "search_menu";
+/*
+- Site Navigation
+	- Accessible Menu
+	- Site Header Navigation
+	- Primary Navigation
+	- Secondary Navigation
+	- Skip Links
+*/
+	@import "site_navigation";
+/*
+- Content Area
+	- Entries
+	- Entry Meta
+	- Pagination
+	- Comments
+*/
+	@import "content_area";
+	/* @import "site_team"; */
+	@import "site_team_slide";
+	@import "pin";
+/*
+- Sidebars
+*/
+	@import "sidebars";
+/*
+- Footer Widgets
+*/
+	@import "footer_widgets";
+/*
+- Site Footer
+*/
+	@import "site_footer";
+/*
+- Pages
+	- Frontpage
+*/
+	@import "page_frontpage";
+/*
+- Post Types
+	- Cases
+*/
+	@import "posttype_cases";
+/*
+- Animations
+*/
+	@import "animation_keyframes";
+/*
+- Media Queries
+	- Retina Display
+	- Max-width: 1500px
+*/
+	@import "1500";
+/*
+	- Max-width: 1280px
+*/
+	@import "1280";
+/*
+	- Max-width: 1200px
+*/
+	@import "1200";
+/*
+	- Max-width: 1024px
+*/
+	@import "1024";
+/*
+	- Max-width: 960px
+*/
+	@import "960";
+/*
+	- Max-width: 800px
+*/
+	@import "800";
+/*
+	- Max-width: 767px
+*/
+	@import "767";
+/*
+	- Max-width: 600px
+*/
+	@import "600";
+/*
+	- Max-width: 480px
+*/
+	@import "480";
+/*
+- Print Styles
+*/
+	@import "print_styles";
