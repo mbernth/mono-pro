@@ -778,3 +778,9 @@ genesis_register_sidebar( array(
 	'name'        => __( 'Case', 'monopro' ),
 	'description' => __( 'This is the Case widget area.', 'monopro' ),
 ) );
+
+//* Gravity forms
+// =====================================================================================================================
+
+// Enables the confirmation anchor on all forms
+add_filter( 'gform_confirmation_anchor', '__return_true' );
