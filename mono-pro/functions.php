@@ -566,6 +566,22 @@ function mono_flexible_grids() {
 				}
 			endif;
 			
+			// Full screen image fields
+			if( get_row_layout() == 'full_screen_slider' ):
+				$rows = get_sub_field( 'slider' );
+				
+				if (get_sub_field ( 'hide_slider' )){
+				}else{
+					if($rows) {
+					$slides = get_sub_field( 'slider' );
+						foreach($slides as $slide) {
+							echo '<h1>Hello World</h1>';
+							echo '<p>' . $slide['text']. '</p>';
+						}
+					}
+				}
+				
+			endif;
 			/* 
 			if( get_row_layout() == 'blog_posts' ):
 				$term = get_field('blog_posts');
