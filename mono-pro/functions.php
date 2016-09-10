@@ -27,17 +27,26 @@ function genesis_sample_google_fonts() {
 	wp_enqueue_script( 'monopro-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js', array( 'jquery' ), '1.0.0' );
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_script( 'mono-jquery', get_stylesheet_directory_uri() . '/js/jquery-1.9.1.min.js', array( 'jquery' ), '1.0.0' );
-	wp_enqueue_script( 'mono-fitvids-script', get_stylesheet_directory_uri() . '/js/jquery.fitvids.js', array( 'jquery' ), '1.0.0', true );
+	// Responsive text for selected headlines
 	wp_enqueue_script( 'mono-fittext', get_stylesheet_directory_uri() . '/js/jquery.fittext.js', array( 'jquery' ), '1.0.0', true );
+	// Responsive movie scripts
+	wp_enqueue_script( 'mono-fitvids-script', get_stylesheet_directory_uri() . '/js/jquery.fitvids.js', array( 'jquery' ), '1.0.0', true );
 	wp_enqueue_script( 'mono-fitvids', get_stylesheet_directory_uri() . '/js/fitvids.js', array( 'jquery' ), '1.0.0', true );
+	// Google map scripts for ACF gmap
 	wp_enqueue_script( 'mono-googlemaps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array( 'jquery' ), '1.0.0', true );
 	wp_enqueue_script( 'mono-maps', get_stylesheet_directory_uri() . '/js/maps.js', array( 'jquery' ), '1.0.0', true );
-	
+	// Flip script used for team
 	wp_enqueue_script( 'mono-flip-jquery', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.min.js', array( 'jquery' ), '1.0.0' );
 	wp_enqueue_script( 'mono-modernizr', get_bloginfo( 'stylesheet_directory' ) . '/js/modernizr.min.js', array( 'jquery' ), '1.0.0' );
 	wp_enqueue_script( 'mono-flip', get_bloginfo( 'stylesheet_directory' ) . '/js/mono_flip.js', array( 'jquery' ), '1.0.0' );
+	// Timeline script
 	wp_enqueue_script( 'moono-timeline', get_bloginfo( 'stylesheet_directory' ) . '/js/timeline.js', array( 'jquery' ), '1.0.0' );
+	// Countdown script
 	wp_enqueue_script( 'countdown', get_stylesheet_directory_uri() . '/js/countdown.js', array( 'jquery' ), '1.0.0' );
+	// Quotes scripts
+	wp_enqueue_script( 'mono-modernizr-custom', get_bloginfo( 'stylesheet_directory' ) . '/js/modernizr.custom.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'quotes', get_stylesheet_directory_uri() . '/js/quotes.js', array( 'jquery' ), '1.0.0' , true);
+	wp_enqueue_script( 'quote_action', get_stylesheet_directory_uri() . '/js/quote_action.js', array( 'jquery' ), '1.0.0' , true);
 
 }
 
@@ -230,7 +239,6 @@ function mono_flexible_grids() {
 	
 		// loop through the rows of data
     	while ( have_rows('content_row') ) : the_row();
-		
 			$headline = 	get_sub_field('row_headline');
 			$rowbutton = get_sub_field('row_button');
 			$rowbuttonmanual = get_sub_field('row_button_manual_url');
@@ -238,11 +246,12 @@ function mono_flexible_grids() {
 			$coll = get_sub_field('columns_no');
 
         	if( get_row_layout() == 'row_setup' ):
-				
+			
+			// This will hide a whole row
 			if (get_sub_field('hide_row')){
 				
 				}else{
-				
+				// Add background color and ID if needed
 				echo '<article class="gridcontainer  ';
 						the_sub_field('background_colour');
 					if (get_sub_field('row_id')){
@@ -250,17 +259,13 @@ function mono_flexible_grids() {
 					 	the_sub_field('row_id');
 					}
 				echo '" >';
-				
+				// Add row headline
 				if ($headline){
 					echo '<h1 class="row_headline">' . $headline . '</h1>';
 				}
 				
 				
-				
 				echo '<div class="wrap">';
-					
-					
-					
 					$selected = get_sub_field('background_colour');
 					$content = get_sub_field('content');
 					
@@ -273,6 +278,7 @@ function mono_flexible_grids() {
 							
 							echo '<section class="coll' . $coll . ' wysiwyg">';
 								the_sub_field('content');
+								// Column botton
 								if ($colbtn['button_text']){
 									if ($colbtn['page_link']){
 									echo '<a class="button" href="' . $colbtn['page_link']. '"><span>';
@@ -311,7 +317,7 @@ function mono_flexible_grids() {
 															<h2>' . $item['item_headline'] .'</h2>
 															<p><strong>' . $item['item_source'] .'</strong> / ' . $item['item_category'] .'</p>
 															' . $item['item_text'] .'';
-																											
+															// Timeline item button												
 															if ($itembtn['button_text']){
 																if ($itembtn['page_link']){
 																	echo '<a class="button" href="' . $itembtn['page_link']. '"><span>';
@@ -333,24 +339,17 @@ function mono_flexible_grids() {
 							
 							// Image fields 
 							if (get_sub_field('image_link')){
+								// Image Array
+								$image =  get_sub_field('image_link');
 								
+								// Full field images
 								if( get_sub_field('content') && $selected == 'Non'  || $selected == 'Non Black'  || $selected == 'Non Red'  || $selected == 'Non Grey') {
-									
-									echo '<section class="coll' . $coll. ' backimage" style="background-image: url(';
-										the_sub_field('image_link');
-									echo ');">';
-									echo '</section>';
-									
+									echo '<section class="coll' . $coll. ' backimage" style="background-image: url('.$image['url'].');"></section>';
 									}else{
-										
 									echo '<section class="coll' . $coll. '">';
-										echo '<img src="';
-											the_sub_field('image_link');
-										echo '">';
+										echo '<img src="'.$image['url'].'" alt="'.$image['alt'].'" />';
 									echo '</section>';
-										
 								}
-								
 							}
 							
 							// Video fields
@@ -372,7 +371,6 @@ function mono_flexible_grids() {
 							
 							// Google map fields
 							if (get_sub_field('google_map')){
-								
 								$location = get_sub_field('google_map');
 								
 								echo '<section class="coll' . $coll. '">';
@@ -382,26 +380,64 @@ function mono_flexible_grids() {
 								echo '</section>';
 							}
 							
-							// Press preview fields
+							// Team fields
+							if ( get_row_layout() == 'team' ){
+								$teamheadline = get_field( 'team_headline', 'option' );
+								$rows = get_field( 'team', 'option' );
+								$partners = get_field( 'associated_partners', 'option' );
+								$partnersheadline = get_field( 'associated_partners_headline', 'option' );
+								
+								if($rows) {
+									
+									foreach($rows as $row) {	
+						
+										if ($row['hide_team_member']){
+										// Show nothing
+										}else{
+										echo '<div class="coll' . $coll. ' column">
+            										<div class="caption caption-5">
+													<div class="profile">
+													<div class="team-image">
+														<img src="' . $row['picture'] .'" title="' . $row['name']. ', ' . $row['title']. '" alt="' . $row['name']. ', ' . $row['title']. '">
+													</div>
+													<div class="team-info">
+														<h3>' . $row['name']. '</h3>
+														<p><em>' . $row['title']. '</em></p>
+													</div>
+													</div>
+													<div class="info">
+													' . $row['profile_text']. '
+													<div class="team-info">
+														<a href="mailto:' . $row['email']. '" class="btn"><svg class="icon-mail"><use xlink:href="#icon-mail"></use></svg> ' . $row['email']. '</a>
+														<a href="tel:' . $row['telephone']. '" class="btn"><svg class="icon-mobile"><use xlink:href="#icon-mobile"></use></svg> ' . $row['telephone']. '</a>
+														<a href="' . $row['linkedin']. '" class="btn" target="_blank"><svg class="icon-linkedin"><use xlink:href="#icon-linkedin"></use></svg> Linkedin</a>
+													</div>
+													</div>
+            										</div>  
+													</div>';
+										}
+									
+									} // Foreach end
+								}
+							}
+							
+							// Preview fields
 							if (get_sub_field('case_name')){
-								$btn = get_sub_field ( 'case_link' );
-								$thumb = get_sub_field('case_thumbnail');
+								$btn = get_sub_field ( 'preview_link' );
+								$thumb = get_sub_field('preview_thumbnail');
 								
 								echo '<section class="coll' . $coll. '">';
-									
-									
 									echo '<div class="entry-content" itemprop="text">
 											<header class="entry-header">
 											<h2 class="entry-title" itemprop="headline">';
-												the_sub_field('case_name');
+												the_sub_field('preview_name');
 									echo '  </h2></header>';
-									
 									echo '	<p><strong>';
-												the_sub_field('article_date');
+												the_sub_field('preview_date');
 									echo '	</strong> / ';
-												the_sub_field('case_client');
+												the_sub_field('preview_client');
 									echo ', ';
-												the_sub_field('artikel_kategori');
+												the_sub_field('preview_category');
 									echo '</p>';
 									
 									if ($thumb){
@@ -409,25 +445,20 @@ function mono_flexible_grids() {
 											echo '<img src="'. $thumb . '">';
 										echo '</div>';
 									}
-									
-									
 												
-												the_sub_field('article_text');
+										the_sub_field('preview_text');
 												
-												if ($btn){
-		
-													if ($btn['page_link']){
-														echo '<a class="button" href="' . $btn['page_link']. '"><span>';
-													}else{
-														echo '<a class="button" href="' . $btn['url_link']. '" target="_blank""><span>';
-													}
-													echo '' . $btn['button_text']. '';
-													echo '</span></a>';
-		
-												}
+										if ($btn){
+											if ($btn['page_link']){
+												echo '<a class="button" href="' . $btn['page_link']. '"><span>';
+											}else{
+												echo '<a class="button" href="' . $btn['url_link']. '" target="_blank""><span>';
+											}
+											echo '' . $btn['button_text']. '';
+											echo '</span></a>';
+										}
 												
 									echo '</div>';
-									
 								
 								echo '</section>';
 								
@@ -465,10 +496,61 @@ function mono_flexible_grids() {
 					echo');"><div class="image-section">';
 					
 						echo '<div class="slide_content animation-moveUp">';
-						echo '<h1>';
-							the_sub_field('full_screen_headline');
-						echo '</h1>';
-							the_sub_field('full_screen_content');
+						if (get_sub_field ( 'full_screen_headline' )){
+							echo '<h1>';
+								the_sub_field('full_screen_headline');
+							echo '</h1>';
+						}
+						
+						while ( have_rows('full_screen_content_types') ) : the_row();
+							$items = get_sub_field('full_screen_quotes');
+							
+							// Text Content
+							if (get_row_layout() == 'full_screen_quotes'){
+								the_sub_field('full_screen_content');
+							}
+							
+							// Image Content
+							if (get_row_layout() == 'full_screen_image'){
+								// Image Array
+								$image =  get_sub_field('image');
+								echo '<img src="'.$image['url'].'" alt="'.$image['alt'].'" />';
+							}
+							
+							// Quotes Rotator
+							if (get_row_layout() == 'full_screen_quotes'){
+								$items = get_field( 'quotes', 'option' );
+								if($items) {
+									echo '<div id="cbp-qtrotator" class="cbp-qtrotator">';
+										foreach($items as $item) {	
+											echo '<div class="cbp-qtcontent">
+											      	<blockquote>' . $item['quote'] .'</blockquote>
+													<footer>' . $item['quote_name'] .'</footer>
+												  </div>';
+										}
+									echo '</div>';
+								}
+							}
+							
+							// Countdown - change date in jquery
+							if (get_row_layout() == 'full_screen_countdown'){
+								echo '<div id="countdown" class="clearfix">
+										<div class="cd-box">
+											<span class="numbers days">00</span><span class="strings timeRefDays">Dage</span>
+										</div>
+										<div class="cd-box">
+											<span class="numbers hours">00</span><span class="strings timeRefHours">Timer</span>
+										</div>
+										<div class="cd-box">
+											<span class="numbers minutes">00</span><span class="strings timeRefMinutes">Minutter</span>
+										</div>
+										<div class="cd-box">
+											<span class="numbers seconds">00</span><span class="strings timeRefSeconds">Sekunder</span>
+										</div>
+									</div>';
+							}
+							
+						endwhile;
 						
 						if ($btn){
 							if ($btn['page_link']){
@@ -736,6 +818,11 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page(array(
 		'page_title' 	=> 'Timeline',
 		'menu_title'	=> 'Timeline'
+	));
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Quotes',
+		'menu_title'	=> 'Quotes'
 	));
 }
 

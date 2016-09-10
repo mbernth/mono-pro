@@ -6185,6 +6185,77 @@ html, body {
 
   .overlay ul li {
     min-height: 34px; } }
+/* Quotes Rotator
+--------------------------------------------- */
+.cbp-qtrotator {
+  position: relative;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+  min-height: 200px; }
+
+.cbp-qtrotator .cbp-qtcontent {
+  position: absolute;
+  min-height: 0px;
+  border-top: 1px solid tranparent;
+  border-bottom: 1px solid tranparent;
+  padding: 0;
+  top: 0;
+  z-index: 0;
+  opacity: 0;
+  width: 100%; }
+
+.no-js .cbp-qtrotator .cbp-qtcontent {
+  border-bottom: none; }
+
+/* Currently visible */
+.cbp-qtrotator .cbp-qtcontent.cbp-qtcurrent,
+.no-js .cbp-qtrotator .cbp-qtcontent {
+  position: relative;
+  z-index: 100;
+  pointer-events: auto;
+  opacity: 1; }
+
+.cbp-qtrotator .cbp-qtcontent:before,
+.cbp-qtrotator .cbp-qtcontent:after {
+  content: " ";
+  display: table; }
+
+.cbp-qtrotator .cbp-qtcontent:after {
+  clear: both; }
+
+.cbp-qtprogress {
+  position: absolute;
+  background: #a56927;
+  height: 1px;
+  width: 0%;
+  top: 0;
+  left: 0;
+  z-index: 1000; }
+
+.cbp-qtrotator blockquote::before {
+  display: none; }
+
+.cbp-qtrotator blockquote {
+  margin: 0;
+  padding: 0; }
+
+.slide_content .cbp-qtrotator blockquote p {
+  font-family: "Titillium Web", Helvetica, Arial, sans-serif;
+  margin: 40px 0 0 0;
+  width: 100%;
+  font-size: 26px;
+  font-size: 2.6rem;
+  line-height: 38px;
+  line-height: 3.8rem;
+  letter-spacing: 0.08rem;
+  font-weight: 400;
+  color: #dfe1df;
+  font-style: normal; }
+
+.cbp-qtrotator blockquote footer:before {
+  content: '? '; }
+
 /*
 - Site Header
 	- Title Area
