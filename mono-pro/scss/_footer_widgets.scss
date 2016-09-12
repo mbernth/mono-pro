@@ -2,6 +2,7 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .footer-widgets {
+	position:relative;
 	background-color: $color-grey;
 	clear: both;
 	padding: 100px 0;
@@ -110,6 +111,7 @@
 --------------------------------------------- */
 
 .footer_search {
+	position:relative;
 	background-color:$color-grey;
 	padding:30px 0 100px 0;
 }

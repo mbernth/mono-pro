@@ -2,6 +2,7 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .site-footer {
+	position:relative;
 	background-color: $color-primary-one;
 	@include font(1.0, 1.2);
 	font-weight:400;

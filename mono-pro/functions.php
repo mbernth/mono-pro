@@ -32,9 +32,9 @@ function genesis_sample_google_fonts() {
 	// Responsive movie scripts
 	wp_enqueue_script( 'mono-fitvids-script', get_stylesheet_directory_uri() . '/js/jquery.fitvids.js', array( 'jquery' ), '1.0.0', true );
 	wp_enqueue_script( 'mono-fitvids', get_stylesheet_directory_uri() . '/js/fitvids.js', array( 'jquery' ), '1.0.0', true );
-	// Google map scripts for ACF gmap
+	/* Google map scripts for ACF gmap
 	wp_enqueue_script( 'mono-googlemaps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array( 'jquery' ), '1.0.0', true );
-	wp_enqueue_script( 'mono-maps', get_stylesheet_directory_uri() . '/js/maps.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'mono-maps', get_stylesheet_directory_uri() . '/js/maps.js', array( 'jquery' ), '1.0.0', true );	 */
 	// Flip script used for team
 	wp_enqueue_script( 'mono-flip-jquery', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.min.js', array( 'jquery' ), '1.0.0' );
 	wp_enqueue_script( 'mono-modernizr', get_bloginfo( 'stylesheet_directory' ) . '/js/modernizr.min.js', array( 'jquery' ), '1.0.0' );
@@ -46,6 +46,10 @@ function genesis_sample_google_fonts() {
 	// Quotes scripts
 	wp_enqueue_script( 'quotes', get_stylesheet_directory_uri() . '/js/quotes.js', array( 'jquery' ), '1.0.0' , true);
 	wp_enqueue_script( 'quote_action', get_stylesheet_directory_uri() . '/js/quote_action.js', array( 'jquery' ), '1.0.0' , true);
+	// Split slider
+	wp_enqueue_script( 'ba-cond', get_stylesheet_directory_uri() . '/js/jquery.ba-cond.min.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'slitslider', get_stylesheet_directory_uri() . '/js/jquery.slitslider.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'slide-nav', get_stylesheet_directory_uri() . '/js/slide.nav.js', array( 'jquery' ), '1.0.0', true );
 
 }
 
@@ -336,18 +340,32 @@ function mono_flexible_grids() {
 							echo '</section>';
 							}
 							
-							// Image fields 
+							// Image fields
 							if (get_sub_field('image_link')){
 								// Image Array
 								$image =  get_sub_field('image_link');
+								$btn = get_sub_field ( 'image_button' );
 								
-								// Full field images
 								if( get_sub_field('content') && $selected == 'Non'  || $selected == 'Non Black'  || $selected == 'Non Red'  || $selected == 'Non Grey') {
+									// Full field images
 									echo '<section class="coll' . $coll. ' backimage" style="background-image: url('.$image['url'].');"></section>';
+									
 									}else{
+										
 									echo '<section class="coll' . $coll. '">';
 										echo '<img src="'.$image['url'].'" alt="'.$image['alt'].'" />';
+										// Image button
+										if ($btn['button_text']){
+											if ($btn['page_link']){
+												echo '<a class="button" href="' . $btn['page_link']. '"><span>';
+											}else{
+												echo '<a class="button" href="' . $btn['url_link']. '" target="_blank""><span>';
+											}
+											echo '' . $btn['button_text']. '';
+											echo '</span></a>';
+										}
 									echo '</section>';
+										
 								}
 							}
 							
@@ -421,9 +439,11 @@ function mono_flexible_grids() {
 							}
 							
 							// Preview fields
-							if (get_sub_field('case_name')){
+							if ( get_row_layout() == 'preview' ){
 								$btn = get_sub_field ( 'preview_link' );
+								// Image Array
 								$thumb = get_sub_field('preview_thumbnail');
+								
 								
 								echo '<section class="coll' . $coll. '">';
 									echo '<div class="entry-content" itemprop="text">
@@ -440,8 +460,8 @@ function mono_flexible_grids() {
 									echo '</p>';
 									
 									if ($thumb){
-										echo '<div class="thumb-image">';
-											echo '<img src="'. $thumb . '">';
+										echo '<div class="thumb-image hover">';
+											echo '<img src="'. $thumb['url'] . '" alt="'.$thumb['alt'].'">';
 										echo '</div>';
 									}
 												
@@ -572,141 +592,57 @@ function mono_flexible_grids() {
 				if (get_sub_field ( 'hide_slider' )){
 				}else{
 					// if($rows) {
-					
+					if($rows){
+						$items = $rows['slider'];
 						
-						foreach($rows as $row) {
-							$itembtn = $item['item_button_link'];
+						echo '<div class="container image-section">
+							  <div id="slider" class="sl-slider-wrapper image-section">
+							  <div class="sl-slider">';
+						
+						foreach($items as $item) {
+							$btn = $item['link'];
 							
-							echo '<h1>Hello World</h1>';
+							echo '<div class="sl-slide bg-1" data-orientation="vertical" data-slice1-rotation="0" data-slice2-rotation="0" data-slice1-scale="0" data-slice2-scale="0">';
+							echo '<div class="sl-slide-inner front-page-1" style="background-image:url(' . $item['image']. ');">';
 							
-							if( $row['logo'] ){
-								echo 	'<img src="' . $row['logo']. '">';
+							if( $item['logo'] ){
+								echo 	'<img src="' . $item['logo']. '">';
 							}
-							if( $row['headline'] ){
-								echo 	'<h3>' . $row['headline']. '</h3>';
+							if( $item['headline'] ){
+								echo 	'<h3>' . $item['headline']. '</h3>';
 							}
-							if( $row['text'] ){
-								echo 	'<div class="slider-text">' . $row['text']. '</div>';
+							if( $item['text'] ){
+								echo 	'<div class="slider-text">' . $item['text']. '</div>';
 							}
-					
+							
+							if ($btn){
+								if ($btn['page_link']){
+									echo '<div class="slider-link"><a class="button" href="' . $btn['page_link']. '">';
+								}else{
+									echo '<div class="slider-link"><a class="button" href="' . $btn['url_link']. '" target="_blank""><span>';
+								}
+								echo '' . $btn['button_text']. '';
+								echo '</a></div>';
+							}
+							
+							echo '</div> <!-- /sl-slide-inner -->';
+							echo '</div> <!-- /sl-slide -->';
+						
 						}
 						
+						echo '<nav id="nav-arrows" class="nav-arrows">
+				  			  <span class="nav-arrow-prev">Previous</span>
+				 			  <span class="nav-arrow-next">Next</span>
+		  		 		  	  </nav>';
+						
+						echo '</div></div></div>';
+						
+					}
 					// }
 				}
 				
 			endif;
-			/* 
-			if( get_row_layout() == 'blog_posts' ):
-				$term = get_field('blog_posts');
-				
-				echo '<article class="gridcontainer White"><div class="wrap"><div class="coll1">';
-					echo '<h1>Hello world!</h1>';
-					
-					if( $term ):
-
-				echo ''. $term['name'] .'';
-				echo '' . $term['description'] . '';
-
-				endif;
-					
-				echo '</div></div></article>';
-			endif;
-			*/
-			/*
-			if( get_row_layout() == 'bindslev_team' ):
-				$teamheadline = get_field( 'team_headline', 'option' );
-				$rows = get_field( 'team', 'option' );
-				$partners = get_field( 'associated_partners', 'option' );
-				$partnersheadline = get_field( 'associated_partners_headline', 'option' );
-				
-				
-				if($rows) {
-					echo '<article class="gridcontainer White team">';
-						
-						if (	get_field( 'team_headline', 'option' )){
-							echo '<h1 class="row_headline">' . $teamheadline .'</h1>';
-							echo '<div class="wrap">';
-						}else{
-							echo '<div class="wrap">';
-						}
-						
-						foreach($rows as $row) {	
-						
-						if ($row['hide_team_member']){
-				
-							}else{
-											
-						echo '<div class="coll3 column">
-            					<div class="caption caption-5">
-									<div class="profile">
-										<div class="team-image">
-											<img src="' . $row['picture'] .'" title="' . $row['name']. ', ' . $row['title']. '" alt="' . $row['name']. ', ' . $row['title']. '">
-										</div>
-										<div class="team-info">
-											<h3>' . $row['name']. '</h3>
-											<p><em>' . $row['title']. '</em></p>
-										</div>
-									</div>
-									<div class="info">
-										' . $row['profile_text']. '
-										<div class="team-info">
-											<a href="mailto:' . $row['email']. '" class="btn"><svg class="icon-mail"><use xlink:href="#icon-mail"></use></svg> ' . $row['email']. '</a>
-											<a href="tel:' . $row['telephone']. '" class="btn"><svg class="icon-mobile"><use xlink:href="#icon-mobile"></use></svg> ' . $row['telephone']. '</a>
-											<a href="' . $row['linkedin']. '" class="btn" target="_blank"><svg class="icon-linkedin"><use xlink:href="#icon-linkedin"></use></svg> Linkedin</a>
-										</div>
-									</div>
-            					</div>  
-						</div>';
-						}
-						
-						}
 			
-					echo '</div></article>';
-
-				}
-				
-				if($partners) {
-					echo '<article class="gridcontainer White partner team">';
-					
-						if (	get_field( 'associated_partners_headline', 'option' )){
-							echo '<h1 class="row_headline">' . $partnersheadline .'</h1>';
-							echo '<div class="wrap">';
-						}else{
-							echo '<div class="wrap">';
-						}
-			
-						foreach($partners as $partner) {	
-						
-						echo '<div class="coll3 column">
-            					<div class="caption caption-5">
-									<div class="profile">
-										<div class="team-image">
-											<img src="' . $partner['picture'] .'" title="' . $partner['name']. ', ' . $partner['title']. '" alt="' . $partner['name']. ', ' . $partner['title']. '">
-										</div>
-										<div class="team-info">
-											<h3>' . $partner['name']. '</h3>
-											<p><em>' . $partner['title']. '</em></p>
-										</div>
-									</div>
-									<div class="info">
-										' . $partner['profile_text']. '
-										<div class="team-info">
-											<a href="mailto:' . $partner['email']. '" class="btn"><svg class="icon-mail"><use xlink:href="#icon-mail"></use></svg> ' . $partner['email']. '</a>
-											<a href="tel:' . $partner['telephone']. '" class="btn"><svg class="icon-mobile"><use xlink:href="#icon-mobile"></use></svg> ' . $partner['telephone']. '</a>
-											<a href="' . $partner['linkedin']. '" class="btn" target="_blank"><svg class="icon-linkedin"><use xlink:href="#icon-linkedin"></use></svg> Linkedin</a>
-										</div>
-									</div>
-            					</div>  
-						</div>';
-						
-					}
-			
-					echo '</div></article>';
-
-				}
-				
-			endif;
-			*/
 			
     	endwhile;
 	
@@ -862,7 +798,7 @@ if ( ! class_exists( 'Case_Widget' ) ) {
 	{
 		function Case_Widget() 
 		{
-			parent::WP_Widget(false, "Case Widget");
+			parent::WP_Widget(false, "Costum Search Widget");
 		}
  
 		function update($new_instance, $old_instance) 

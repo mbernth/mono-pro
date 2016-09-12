@@ -191,7 +191,11 @@
 --------------------------------------------- */
 
 .nav-secondary {
-	background-color: $color-white;
+	position:fixed;
+	margin-top:77px;
+	width:100%;
+	background-color: $color-primary-one;
+	z-index:10;
 }
 
 /* Responsive Menu

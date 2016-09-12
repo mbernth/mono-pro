@@ -1,6 +1,7 @@
 /* Grid
 --------------------------------------------- */
 .gridcontainer {
+	position:relative;
 	display:block;
 	float:left;
 	width:100%;
@@ -224,6 +225,10 @@
 .full-width-content .gridcontainer.White {
 	padding:120px 0 80px;
 	margin-bottom:0;
+}
+
+.full-width-content .gridcontainer.White {
+	background-color:$color-white;
 }
 
 .full-width-content .gridcontainer.Black {

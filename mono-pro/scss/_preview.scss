@@ -1,0 +1,50 @@
+/* Scss Document */
+
+.hover {
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    transform: translateZ(0) scale(1, 1);
+}
+
+.hover::after {
+    content: '';
+    display: block;
+    background-color: inherit;
+    -webkit-transition: 3s -webkit-transform cubic-bezier(0.23, 1, 0.32, 1);
+    transition: 3s transform cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: .9;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: scale(2) translateX(-100%) translateY(-100%) translateZ(0px) rotate(-45deg);
+    transform: scale(2) translateX(-100%) translateY(-100%) translateZ(0px) rotate(-45deg);
+}
+
+.hover::after {
+    content: '';
+    display: block;
+    background-color: #990000;
+    -webkit-transition: 3s -webkit-transform cubic-bezier(0.23, 1, 0.32, 1);
+    transition: 3s transform cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: .9;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: scale(2) translateX(-100%) translateY(-100%) translateZ(0px) rotate(-45deg);
+    transform: scale(2) translateX(-100%) translateY(-100%) translateZ(0px) rotate(-45deg);
+}
+
+@media (min-width: 992px){
+.hover:hover::after {
+    -webkit-transform: scale(2) rotate(-45deg) translateZ(0px);
+    transform: scale(2) rotate(-45deg) translateZ(0px);
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+}
+}
