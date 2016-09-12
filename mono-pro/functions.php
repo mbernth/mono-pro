@@ -44,7 +44,6 @@ function genesis_sample_google_fonts() {
 	// Countdown script
 	wp_enqueue_script( 'countdown', get_stylesheet_directory_uri() . '/js/countdown.js', array( 'jquery' ), '1.0.0' );
 	// Quotes scripts
-	wp_enqueue_script( 'mono-modernizr-custom', get_bloginfo( 'stylesheet_directory' ) . '/js/modernizr.custom.js', array( 'jquery' ), '1.0.0', true );
 	wp_enqueue_script( 'quotes', get_stylesheet_directory_uri() . '/js/quotes.js', array( 'jquery' ), '1.0.0' , true);
 	wp_enqueue_script( 'quote_action', get_stylesheet_directory_uri() . '/js/quote_action.js', array( 'jquery' ), '1.0.0' , true);
 
@@ -566,19 +565,33 @@ function mono_flexible_grids() {
 				}
 			endif;
 			
-			// Full screen image fields
+			// Full screen slider fields
 			if( get_row_layout() == 'full_screen_slider' ):
-				$rows = get_sub_field( 'slider' );
+				$rows = get_sub_field( 'split_slider' );
 				
 				if (get_sub_field ( 'hide_slider' )){
 				}else{
-					if($rows) {
-					$slides = get_sub_field( 'slider' );
-						foreach($slides as $slide) {
+					// if($rows) {
+					
+						
+						foreach($rows as $row) {
+							$itembtn = $item['item_button_link'];
+							
 							echo '<h1>Hello World</h1>';
-							echo '<p>' . $slide['text']. '</p>';
+							
+							if( $row['logo'] ){
+								echo 	'<img src="' . $row['logo']. '">';
+							}
+							if( $row['headline'] ){
+								echo 	'<h3>' . $row['headline']. '</h3>';
+							}
+							if( $row['text'] ){
+								echo 	'<div class="slider-text">' . $row['text']. '</div>';
+							}
+					
 						}
-					}
+						
+					// }
 				}
 				
 			endif;
@@ -735,14 +748,13 @@ function mono_push_content() {
 add_action( 'wp_enqueue_scripts', 'push_scripts_jquery' );
 function push_scripts_jquery() {
 	$pushcontent = get_field('content_row');
-	$push = get_sub_field( 'push_content' );  //this is the ACF instruction to get everything in the repeater field
+	$push = get_sub_field( 'push_content' ); 
 		
 	if( have_rows('content_row') ):
 	while ( have_rows('content_row') ) : the_row();
 		if( get_row_layout() == 'row_setup' ){
 		while ( have_rows('column') ) : the_row();
 		if (get_sub_field('push_article')){
-			wp_enqueue_script( 'push-modernizr-script', get_bloginfo( 'stylesheet_directory' ) . '/js/modernizr.custom.push.js', array( 'jquery' ), '1.0.0' );
 			wp_enqueue_script( 'classie-push-script', get_bloginfo( 'stylesheet_directory' ) . '/js/classie.js', array( 'jquery' ), '1.0.0', true );
 			wp_enqueue_script( 'push-script-jquery', get_stylesheet_directory_uri() . '/js/push.js', array( 'jquery' ), '1.0.0', true );
 		}
