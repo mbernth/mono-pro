@@ -50,6 +50,8 @@ function genesis_sample_google_fonts() {
 	wp_enqueue_script( 'ba-cond', get_stylesheet_directory_uri() . '/js/jquery.ba-cond.min.js', array( 'jquery' ), '1.0.0', true );
 	wp_enqueue_script( 'slitslider', get_stylesheet_directory_uri() . '/js/jquery.slitslider.js', array( 'jquery' ), '1.0.0', true );
 	wp_enqueue_script( 'slide-nav', get_stylesheet_directory_uri() . '/js/slide.nav.js', array( 'jquery' ), '1.0.0', true );
+	// Flickity
+	wp_enqueue_script( 'ba-cond', get_stylesheet_directory_uri() . '/js/flickity.pkgd.min.js', array( 'jquery' ), '1.0.0' );
 
 }
 
@@ -397,6 +399,23 @@ function mono_flexible_grids() {
 								echo '</section>';
 							}
 							
+							// Quotes fields
+							if (get_row_layout() == 'quotes_content'){
+								$items = get_field( 'quotes', 'option' );
+								if($items) {
+								echo '<section class="coll' . $coll. '">';
+									echo '<div id="cbp-qtrotator" class="cbp-qtrotator">';
+										foreach($items as $item) {	
+											echo '<div class="cbp-qtcontent">
+											      	<blockquote>' . $item['quote'] .'</blockquote>
+													<footer>' . $item['quote_name'] .'</footer>
+												  </div>';
+										}
+									echo '</div>';
+								echo '</section>';
+								}
+							}
+							
 							// Team fields
 							if ( get_row_layout() == 'team' ){
 								$teamheadline = get_field( 'team_headline', 'option' );
@@ -446,36 +465,53 @@ function mono_flexible_grids() {
 								
 								
 								echo '<section class="coll' . $coll. '">';
-									echo '<div class="entry-content" itemprop="text">
-											<header class="entry-header">
-											<h2 class="entry-title" itemprop="headline">';
-												the_sub_field('preview_name');
-									echo '  </h2></header>';
-									echo '	<p><strong>';
-												the_sub_field('preview_date');
-									echo '	</strong> / ';
-												the_sub_field('preview_client');
-									echo ', ';
-												the_sub_field('preview_category');
-									echo '</p>';
+									echo '<div class="entry-content entry-content-preview hover-preview" itemprop="text">';
+										
 									
 									if ($thumb){
-										echo '<div class="thumb-image hover">';
-											echo '<img src="'. $thumb['url'] . '" alt="'.$thumb['alt'].'">';
-										echo '</div>';
+										
+										if ($btn){
+											if ($btn['page_link']){
+												echo '<a href="' . $btn['page_link']. '">';
+											}else{
+												echo '<a href="' . $btn['url_link']. '" target="_blank"">';
+											}
+												echo '<div class="thumb-image hover">';
+												
+													echo '<div class="entry-preview">';
+													echo '<header class="entry-header">';
+													echo '<h2 class="entry-title" itemprop="headline">';
+														the_sub_field('preview_name');
+													echo '</h2></header>';
+													echo '	<p>';
+														the_sub_field('preview_client');
+													echo '</p>';
+													echo '</div>';
+													
+													echo '<img src="'. $thumb['url'] . '" alt="'.$thumb['alt'].'">';
+												echo '</div>';
+											echo '</a>';
+										}else{
+											echo '<div class="thumb-image hover">';
+												
+												echo '<div class="entry-preview">';
+												echo '<header class="entry-header">';
+												echo '<h2 class="entry-title" itemprop="headline">';
+													the_sub_field('preview_name');
+												echo '</h2></header>';
+												echo '	<p>';
+													the_sub_field('preview_client');
+												echo '</p>';
+												echo '</div>';
+													
+												echo '<img src="'. $thumb['url'] . '" alt="'.$thumb['alt'].'">';
+											echo '</div>';
+										}
+										
 									}
 												
 										the_sub_field('preview_text');
 												
-										if ($btn){
-											if ($btn['page_link']){
-												echo '<a class="button" href="' . $btn['page_link']. '"><span>';
-											}else{
-												echo '<a class="button" href="' . $btn['url_link']. '" target="_blank""><span>';
-											}
-											echo '' . $btn['button_text']. '';
-											echo '</span></a>';
-										}
 												
 									echo '</div>';
 								
