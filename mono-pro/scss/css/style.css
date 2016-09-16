@@ -6991,17 +6991,13 @@ html, body {
   z-index: 100;
   width: 100%;
   text-align: center;
-  bottom: -45%;
-  opacity: 0;
+  bottom: 15%;
+  opacity: 1;
   -webkit-transition: all .6s ease-in-out .2s;
   -moz-transition: all .6s ease-in-out .2s;
   -ms-transition: all .6s ease-in-out .2s;
   -o-transition: all .6s ease-in-out .2s;
   transition: all .6s ease-in-out .2s; }
-
-.entry-content.entry-content-preview.hover-preview:hover .entry-preview {
-  bottom: 45%;
-  opacity: 1; }
 
 .entry-content.entry-content-preview .entry-preview .entry-title {
   margin-bottom: 10px; }
@@ -7040,8 +7036,8 @@ html, body {
   position: absolute;
   bottom: 0;
   left: 0;
-  -webkit-transform: scale(2) translateX(0%) translateY(100%) translateZ(0px) rotate(0deg);
-  transform: scale(2) translateX(0%) translateY(100%) translateZ(0px) rotate(0deg); }
+  -webkit-transform: scale(2) translateX(0%) translateY(50%) translateZ(0px) rotate(0deg);
+  transform: scale(2) translateX(0%) translateY(50%) translateZ(0px) rotate(0deg); }
 
 /*
 .hover::after {
@@ -7060,12 +7056,28 @@ html, body {
     transform: scale(2) translateX(-100%) translateY(-100%) translateZ(0px) rotate(-45deg);
 }
 */
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
+  .hover::after {
+    -webkit-transform: scale(2) translateX(0%) translateY(100%) translateZ(0px) rotate(0deg);
+    transform: scale(2) translateX(0%) translateY(100%) translateZ(0px) rotate(0deg); }
+
   .hover:hover::after {
     -webkit-transform: scale(2) rotate(0deg) translateZ(0px);
     transform: scale(2) rotate(0deg) translateZ(0px);
     -webkit-transition-duration: 2s;
-    transition-duration: 2s; } }
+    transition-duration: 2s; }
+
+  .entry-content.entry-content-preview.hover-preview .entry-preview {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+    bottom: -45%;
+    opacity: 0; }
+
+  .entry-content.entry-content-preview.hover-preview:hover .entry-preview {
+    bottom: 40%;
+    opacity: 1; } }
 /*! Flickity v2.0.3
 http://flickity.metafizzy.co
 ---------------------------------------------- */
@@ -8022,6 +8034,15 @@ body.has-active-menu {
   -webkit-transition-delay: 0s;
   transition-delay: 0s; }
 
+.gridcontainer button#trigger-overlay {
+  float: none;
+  max-width: 270px;
+  margin: 70px auto 0;
+  position: relative;
+  clear: both;
+  display: block;
+  text-align: center; }
+
 .full-width-content .gridcontainer.Red .button {
   background-color: #d4d6d4;
   color: #2d2d2d; }
@@ -8042,6 +8063,13 @@ body.has-active-menu {
 .entry-content a.button span {
   display: block;
   padding: 24px 32px; }
+
+.gridcontainer [class*="coll"] .button {
+  max-width: 200px; }
+
+.gridcontainer [class*="coll"] a.button span {
+  display: block;
+  padding: 16px; }
 
 .gridcontainer .button:before,
 .entry-content .button:before {

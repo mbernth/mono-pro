@@ -135,6 +135,16 @@
 	
 }
 
+.gridcontainer button#trigger-overlay{
+	float:none;
+	max-width:270px;
+	margin:70px auto 0;
+	position:relative;
+	clear:both;
+	display:block;
+	text-align:center;
+}
+
 .full-width-content .gridcontainer.Red .button{
 	background-color: shade( $color-grey, 5%);
 	color:shade( $color-grey, 80%);
@@ -157,6 +167,14 @@
 .entry-content a.button span{
 	display:block;
 	padding:24px 32px;
+}
+
+.gridcontainer [class*="coll"] .button {
+	max-width:200px;
+}
+.gridcontainer [class*="coll"] a.button span{
+	display:block;
+	padding:16px;
 }
 
 .gridcontainer .button:before,
