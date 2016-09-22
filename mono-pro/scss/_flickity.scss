@@ -1,6 +1,10 @@
 /*! Flickity v2.0.3
 http://flickity.metafizzy.co
 ---------------------------------------------- */
+.flickity-viewport img{
+	max-width: none;
+	max-height:100%;
+}
 
 .flickity-enabled {
   position: relative;
@@ -127,4 +131,9 @@ http://flickity.metafizzy.co
 
 .flickity-page-dots .dot.is-selected {
   opacity: 1;
+}
+
+/* ---- mono styles ---- */
+
+.carousel-cell{
 }

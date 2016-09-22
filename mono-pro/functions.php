@@ -51,7 +51,7 @@ function genesis_sample_google_fonts() {
 	wp_enqueue_script( 'slitslider', get_stylesheet_directory_uri() . '/js/jquery.slitslider.js', array( 'jquery' ), '1.0.0', true );
 	wp_enqueue_script( 'slide-nav', get_stylesheet_directory_uri() . '/js/slide.nav.js', array( 'jquery' ), '1.0.0', true );
 	// Flickity
-	wp_enqueue_script( 'ba-cond', get_stylesheet_directory_uri() . '/js/flickity.pkgd.min.js', array( 'jquery' ), '1.0.0' );
+	wp_enqueue_script( 'flickity', get_stylesheet_directory_uri() . '/js/flickity.pkgd.min.js', array( 'jquery' ), '1.0.0', true );
 
 }
 
@@ -369,6 +369,27 @@ function mono_flexible_grids() {
 									echo '</section>';
 										
 								}
+							}
+							
+							// Flickity
+							if (get_row_layout() == 'flickity'){
+								
+								$rows = get_sub_field( 'flickity_images' );
+								
+								
+								echo '<section class="coll' . $coll. '">';
+									echo '<div class="carousel" data-flickity>';
+										foreach($rows as $row) {	
+										// Image Array
+										$image = $row['flickity_image'];
+											if($rows) {
+												echo '<div class="carousel-cell">';
+													echo '<img src="'.$image['url'].'" alt="'.$image['alt'].'" />';
+												echo '</div>';
+											}
+										}
+									echo '</div>';
+								echo '</section>';
 							}
 							
 							// Video fields
