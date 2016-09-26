@@ -2463,7 +2463,7 @@ body .gform_wrapper label.gfield_label + div.ginput_container {
 .gform_wrapper .gfield_checkbox li label,
 .gform_wrapper .gfield_radio li label {
   display: block;
-  margin: 0 0 0 24px;
+  margin: 6px 0 0 24px;
   padding: 0;
   width: auto;
   vertical-align: top;
